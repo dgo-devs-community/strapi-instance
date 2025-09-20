@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_fechas_fecha_del_eventos",
+  "info": {
+    "displayName": "Fecha del Evento"
+  },
+  "options": {},
+  "attributes": {
+    "Fecha": {
+      "type": "datetime"
+    }
+  },
+  "config": {}
+}

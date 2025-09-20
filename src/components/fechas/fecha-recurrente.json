@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_fechas_fecha_recurrentes",
+  "info": {
+    "displayName": "Fecha Recurrente"
+  },
+  "options": {},
+  "attributes": {
+    "Fecha": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
