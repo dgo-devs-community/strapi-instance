@@ -1,61 +1,108 @@
-# 🚀 Getting started with Strapi
+# Dgo TechHub Strapi
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+[![Strapi](https://img.shields.io/badge/strapi-%232E7EEA.svg?style=for-the-badge&logo=strapi&logoColor=white)](https://strapi.io/)
 
-### `develop`
+Strapi implementation for managing Dgo TechHub community events. This headless CMS powers the backend for our community website, handling events, user management, and content delivery.
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+## 🚀 Features
 
+- Event management
+- User authentication and permissions
+- SEO optimization
+- Email notifications via Mailgun
+- Self-hosted solution
+
+## 🛠️ Tech Stack
+
+- **Backend**: Strapi v5.23.5
+- **Database**: 
+  - Development: SQLite (included)
+  - Production: PostgreSQL
+- **Email**: Mailgun
+- **Plugins**:
+  - @strapi/plugin-seo
+  - @strapi/provider-email-mailgun
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js >= 18.0.0
+- npm >= 6.0.0
+- PostgreSQL (for production) or SQLite (for development)
+
+### Environment Setup
+
+1. Copy the example environment file:
+   ```bash
+   cp .env.example .env
+   ```
+2. Update the .env file with your configuration. For development with SQLite, use:
+   ```
+   # Database (SQLite for development)
+   DATABASE_CLIENT=sqlite
+   DATABASE_FILENAME=.tmp/data.db
+
+   # App
+   NODE_ENV=development
+   HOST=0.0.0.0
+   PORT=1337
+
+   # Security (generate your own secrets)
+   ADMIN_JWT_SECRET=your_admin_jwt_secret
+   API_TOKEN_SALT=your_api_token_salt
+   APP_KEYS=your_app_keys
+   JWT_SECRET=your_jwt_secret
+   TRANSFER_TOKEN_SALT=your_transfer_token_salt
+   ENCRYPTION_KEY=your_encryption_key
+
+   # Mailgun Configuration
+   MAILGUN_API_KEY=your_mailgun_private_api_key
+   MAILGUN_DOMAIN=your_mailgun_domain.com
+   MAILGUN_DEFAULT_FROM=no-reply@yourdomain.com
+   MAILGUN_DEFAULT_REPLY_TO=contact@yourdomain.com
+   ```
+
+## Installation
+1. Install dependencies:
+```bash
+npm install
 ```
+2. Start the development server:
+```bash
 npm run develop
-# or
-yarn develop
+```
+3. Access the admin panel at: http://localhost:1337/admin
+
+
+## 🔌 Plugin Configuration
+### Mailgun Setup
+Update your `config/plugins.ts` with:
+
+```typescript
+export default ({ env }) => ({
+  email: {
+    config: {
+      provider: 'mailgun',
+      providerOptions: {
+        key: env('MAILGUN_API_KEY'),
+        domain: env('MAILGUN_DOMAIN'),
+        url: 'https://api.mailgun.net/',
+      },
+      settings: {
+        defaultFrom: env('MAILGUN_DEFAULT_FROM'),
+        defaultReplyTo: env('MAILGUN_DEFAULT_REPLY_TO'),
+      },
+    },
+  },
+});
 ```
 
-### `start`
+## 🐳 Docker (Optional)
+For production deployment with PostgreSQL:
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
-
-```
-npm run start
-# or
-yarn start
+```bash
+docker-compose up -d
 ```
 
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
-```
-yarn strapi deploy
-```
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+Built with ❤️ by the Dgo TechHub team
