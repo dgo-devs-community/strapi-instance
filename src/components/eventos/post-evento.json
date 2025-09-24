@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_eventos_post_eventos",
+  "info": {
+    "displayName": "Texto"
+  },
+  "options": {},
+  "attributes": {
+    "Texto": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

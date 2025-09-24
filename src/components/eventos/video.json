@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_eventos_videos",
+  "info": {
+    "displayName": "Video"
+  },
+  "options": {},
+  "attributes": {
+    "Video": {
+      "type": "customField",
+      "customField": "plugin::oembed.oembed"
+    }
+  },
+  "config": {}
+}

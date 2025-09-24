@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_eventos_galeria_de_imagenes",
+  "info": {
+    "displayName": "Galeria de Imagenes"
+  },
+  "options": {},
+  "attributes": {
+    "Gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

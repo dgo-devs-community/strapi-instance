@@ -77,6 +77,15 @@
     },
     "Formulario": {
       "type": "string"
+    },
+    "BlogEvento": {
+      "type": "dynamiczone",
+      "components": [
+        "eventos.post-evento",
+        "eventos.galeria-de-imagenes",
+        "eventos.hero-image",
+        "eventos.video"
+      ]
     }
   }
 }

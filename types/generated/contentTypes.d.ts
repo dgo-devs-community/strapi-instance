@@ -422,6 +422,14 @@ export interface ApiEventoEvento extends Struct.CollectionTypeSchema {
   };
   attributes: {
     Banner: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    BlogEvento: Schema.Attribute.DynamicZone<
+      [
+        'eventos.post-evento',
+        'eventos.galeria-de-imagenes',
+        'eventos.hero-image',
+        'eventos.video',
+      ]
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
