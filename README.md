@@ -2,7 +2,8 @@
 
 [![Strapi](https://img.shields.io/badge/strapi-%232E7EEA.svg?style=for-the-badge&logo=strapi&logoColor=white)](https://strapi.io/)
 
-Strapi implementation for managing Dgo TechHub community events. This headless CMS powers the backend for our community website, handling events, user management, and content delivery.
+Implementación de Strapi para manejar los eventos de la comunidad de Dgo TechHub.
+
 
 ## 🚀 Features
 
@@ -15,7 +16,7 @@ Strapi implementation for managing Dgo TechHub community events. This headless C
 ## 🛠️ Tech Stack
 
 - **Backend**: Strapi v5.23.5
-- **Database**: 
+- **Database**:
   - Development: SQLite (included)
   - Production: PostgreSQL
 - **Email**: Mailgun
@@ -101,8 +102,14 @@ export default ({ env }) => ({
 ## 🐳 Docker (Optional)
 For production deployment with PostgreSQL:
 
-```bash
-docker-compose up -d
-```
+If you use a deployment service like Vercel or Dokploy. Give access to the repository, build the docker image using Dockerfile it shuold autodetech the multi step and build the production image.
+In your service, include the needed environment variables. You will also need a Postgers db running, copy over the details to the env variables so Strapi can connect automatically.
+
+### Workflow
+Any changes made that imply any changes to the database like but not limited to: collections changes, components, plugins, should be mande locally. This is to test if it works and also to implement the api calls in the community website.
+The main reason is that if those changes are made in Strapi's production instance, when the container gets recreated or if the docker service restarts those changes will be lost. So, making the changes locally and pushing those changes to the main branch, will trigger a rebuild of the production image in docker / dokploy / vercel. That way the changes to the db schema will reflect in the production instance.
+
+Changes to the content, like editing an event to have images or remove a form can be done in production normally.
+
 
 Built with ❤️ by the Dgo TechHub team
